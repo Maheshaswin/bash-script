@@ -37,6 +37,7 @@ echo \
 
 # Importing repository for cassandra
 echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo tee /etc/apt/trusted.gpg.d/cassandra.asc
 
 # Import repository for mongodb dependency library libssl1.1
 echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
@@ -78,7 +79,7 @@ sudo mv kafka_2.12-3.3.1.tgz /usr/local/kafka # Move to the desired folder
 cd /etc/systemd/system/ # open the path to place the files
 
 # Zookeeper service file
-tee -a zookeeper.service <<EOF
+sudo tee -a zookeeper.service <<EOF
 [Unit]
 Description=Apache Zookeeper server
 Documentation=http://zookeeper.apache.org
@@ -96,7 +97,7 @@ WantedBy=multi-user.target
 EOF
 
 # Kafka service file
-tee -a kafka.service <<EOF
+sudo tee -a kafka.service <<EOF
 [Unit]
 Description=Apache Kafka Server
 Documentation=http://kafka.apache.org/documentation.html
