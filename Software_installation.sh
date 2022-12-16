@@ -68,6 +68,10 @@ sudo apt-get install mongodb-org -y
 systemctl start mongod
 systemctl enable mongod
 
+# MongoDB Compass
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.34.1_amd64.deb
+sudo dpkg -i mongodb-compass_1.34.1_amd64.deb
+
 # CASSANDRA
 sudo apt install cassandra -y
 
@@ -120,4 +124,4 @@ sudo systemctl daemon-reload
 
 # Start the services
 sudo systemctl start zookeeper 
-sudo systemctl start kafka 
+sudo systemctl start kafka
